@@ -1,0 +1,36 @@
+<app-loading *ngIf="loading"></app-loading>
+<div class=" m-5">
+    <div class="row">
+    <div class="col-9">
+        <img class="img-circle" [src]="artist.images[0].url" alt="">
+        <h1>{{artist.name}}</h1>
+        <span>Seguidores:  {{artist.followers.total | number}}</span>
+    </div>
+    <div class="col-3">
+        <button (click)="back()" class="btn btn-outline-danger btn-block"> Regresar </button>
+    </div>
+    
+</div>
+<div class="mt-5">
+    <table class="table table-borderless table-dark">
+        <thead>
+            <tr>
+            <th scope="col">Artistas</th>
+            <th scope="col">Cancion</th>
+            <th scope="col">Album</th>
+            <th scope="col">Portada</th>
+            <th scope="col">Reproducir</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let track of topTrack">
+            <th scope="row">{{ track.artists[0].name }}</th>
+            <td>{{ track.name }}</td>
+            <td>{{ track.album['name'] }}</td>
+            <td><img [src]="track.album['images'][2].url" alt=""></td>
+            <td><audio [src]="track.preview_url" controls></audio></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
